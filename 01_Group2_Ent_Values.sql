@@ -7,7 +7,7 @@ USE Entertainment;
 
 
 
--- Members table
+-- Groups_Performers table
 
 
 
@@ -15,7 +15,7 @@ USE Entertainment;
 
 
 
--- Style table
+-- Musical_Styles table
 
 
 
@@ -23,17 +23,17 @@ USE Entertainment;
 
 
 
+-- Performers table
+
+
+
 -- Engagements table
 
 
 
--- GroupMembers table
+-- Groups_Styles table 
 
 
 
--- GroupStyle table 
-
-
-
--- CustomerStyle table
+-- Musical_Preferences table
 
