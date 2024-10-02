@@ -3,8 +3,50 @@
 
 CREATE DATABASE Entertainment;
 
--- Agents table
+USE Entertainment;
 
+
+-- Agents table
+/*
+Notes:
+Added constraint to AgentsKey to force it to start with the letter A
+Updated column names to account for table name change
+*/
+
+CREATE TABLE Agents
+(
+	-- Agents Table Columns
+	AgentsKey varchar(8) NOT NULL,
+	AgentsFirstName varchar(50) NOT NULL,
+	AgentsLastName varchar(50) NOT NULL,
+	AgentsAddress varchar(50) NOT NULL,
+	AgentsCity varchar(50) NOT NULL,
+	AgentsState char(2) DEFAULT 'WA' NOT NULL,
+	AgentsZip char(5) NOT NULL,
+	AgentsPhone varchar(15) NOT NULL,
+	AgentsDateHired date NOT NULL,
+	AgentsSalary decimal(10,2) NOT NULL,
+	AgentsCommissionRate decimal (4,3) NOT NULL,
+
+	-- Agents Table Constraints
+	CONSTRAINT PK_Agents PRIMARY KEY (AgentsKey), -- Primary Key constraint
+	CONSTRAINT Valid_Key_Agents CHECK (AgentsKey LIKE 'A%'), -- Forces AgentsKey to start with A
+	CONSTRAINT Valid_Zip_Agents CHECK (AgentsZip NOT LIKE '%[^0-9]%'), -- Forces AgentsZip column to only consist of digits by using NOT LIKE
+
+	-- Forces AgentsPhone to use proper phone number format, with or without area code
+	CONSTRAINT Valid_Phone_Agents CHECK (AgentsPhone LIKE '[0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]'
+										OR AgentsPhone LIKE '([0-9][0-9][0-9])[0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]'), 
+
+	CONSTRAINT Valid_Salary_Agents CHECK (AgentsSalary >= 0), -- Forces AgentsSalary to be nonnegative
+	CONSTRAINT Valid_Commission_Agents CHECK (AgentsCommissionRate >= 0 AND AgentsCommissionRate <= 1), -- Forces AgentsCommissionRate to be between 0 and 1
+	
+	-- Forces AgentsState to be a valid state abbreviation
+	CONSTRAINT Valid_State_Agents CHECK (AgentsState IN ('AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA',
+														'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD',
+														'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ',
+														'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC',
+														'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'))
+);
 
 
 -- Groups_Performers table
