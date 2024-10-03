@@ -54,11 +54,6 @@ CREATE TABLE Agents
 );
 GO
 
--- Groups_Performers table
-
-
-
-
 
 -- Groups table
 /*
@@ -99,6 +94,7 @@ CREATE TABLE Groups
 								'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'))
 );
 GO
+
 
 -- Musical_Styles table
 CREATE TABLE [Musical_Styles]
@@ -160,6 +156,20 @@ CREATE TABLE [Performers]
 										OR PerformersPhone LIKE '([0-9][0-9][0-9])[0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]'),
 	-- Ensure gender is of valid value.
 	CONSTRAINT Valid_Gender_Performers CHECK (PerformersGender IN ('M', 'F'))
+);
+GO
+
+
+-- Groups_Performers table
+CREATE TABLE [Groups_Performers]
+(
+	-- Groups_Performers Columns
+	[GroupsKey] varchar(8) NOT NULL,
+	[PerformersKey] varchar(8) NOT NULL
+
+	-- Foreign Keys
+	CONSTRAINT FK_GroupsKey FOREIGN KEY (GroupsKey) REFERENCES Groups(GroupsKey), -- Foreign Key to Groups table
+    CONSTRAINT FK_PerformersKey FOREIGN KEY (PerformersKey) REFERENCES Performers(PerformersKey)  -- Foreign Key to Performers table
 );
 GO
 

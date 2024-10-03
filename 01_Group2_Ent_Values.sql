@@ -95,7 +95,6 @@ VALUES
 		('C015', 'Carol', 'Viescas', '754 Fourth Ave', 'Seattle', 'WA', '98115', '555-2296');
 
 
-
 -- Performers table
 INSERT INTO [Performers] ([PerformersKey], [PerformersFirstName], [PerformersLastName], [PerformersSuffix], [PerformersPhone], [PerformersGender])
 VALUES
@@ -127,6 +126,50 @@ VALUES
 ;
 
 
+-- Groups_Performers table
+INSERT INTO [Groups_Performers] ([GroupsKey], [PerformersKey])
+VALUES
+	('G001', 'M006'),
+	('G001', 'M007'),
+	('G001', 'M018'),
+	('G002', 'M020'),
+	('G002', 'M021'),
+	('G003', 'M002'),
+	('G003', 'M003'),
+	('G003', 'M004'),
+	('G003', 'M009'),
+	('G003', 'M017'),
+	('G003', 'M019'),
+	('G004', 'M025'),
+	('G005', 'M016'),
+	('G005', 'M020'),
+	('G005', 'M021'),
+	('G006', 'M004'),
+	('G006', 'M013'),
+	('G006', 'M018'),
+	('G006', 'M020'),
+	('G007', 'M001'),
+	('G007', 'M002'),
+	('G007', 'M005'),
+	('G007', 'M007'),
+	('G007', 'M010'),
+	('G008', 'M003'),
+	('G008', 'M005'),
+	('G008', 'M011'),
+	('G008', 'M014'),
+	('G008', 'M015'),
+	('G009', 'M021'),
+	('G010', 'M008'),
+	('G010', 'M012'),
+	('G010', 'M023'),
+	('G010', 'M024'),
+	('G011', 'M022'),
+	('G012', 'M023'),
+	('G013', 'M012'),
+	('G013', 'M014'),
+	('G013', 'M017'),
+	('G013', 'M024')
+;
 
 
 -- Engagements table
