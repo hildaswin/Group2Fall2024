@@ -191,7 +191,18 @@ CREATE TABLE Engagements
 
 -- Groups_Styles table 
 
-
+CREATE TABLE Groups_Styles
+(
+	GroupsKey VARCHAR(8) FOREIGN KEY REFERENCES Groups(GroupsKey),
+	MusicalStylesKey varchar(8) FOREIGN KEY REFERENCES Musical_Styles(MusicalStylesKey),
+	GroupsStyleStrength TINYINT NOT NULL CHECK (GroupsStyleStrength BETWEEN 0 AND 6),
+);
 
 -- Musical_Preferences table
 
+CREATE TABLE Musical_Preferences
+(
+	CustKey VARCHAR(8) FOREIGN KEY REFERENCES Customers(CustKey),
+	MusicalStylesKey varchar(8) FOREIGN KEY REFERENCES Musical_Styles(MusicalStylesKey),
+	CustStyleStrength TINYINT NOT NULL CHECK (CustStyleStrength BETWEEN 0 AND 6),
+);
