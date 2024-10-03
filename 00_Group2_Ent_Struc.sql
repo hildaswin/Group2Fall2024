@@ -10,8 +10,6 @@ GO
 USE [Entertainment]
 GO
 
-USE Entertainment;
-
 -- Agents table
 /*
 Notes:
