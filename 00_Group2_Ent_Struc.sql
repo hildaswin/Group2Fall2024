@@ -37,8 +37,7 @@ CREATE TABLE Customers
 	CONSTRAINT PK_CustKey PRIMARY KEY (CustKey),  
 	CONSTRAINT CHK_CustState CHECK (CustState = 'WA'),
 	CONSTRAINT CHK_CustZip CHECK (CustZip LIKE '[0-9][0-9][0-9][0-9][0-9]'),
-	CONSTRAINT CHK_CustPhone CHECK (CustPhone LIKE '(___) ___-____') 
-
+	CONSTRAINT CHK_CustPhone CHECK (CustPhone LIKE '___-____' OR CustPhone LIKE '(___) ___-____')
 );
 
 GO
