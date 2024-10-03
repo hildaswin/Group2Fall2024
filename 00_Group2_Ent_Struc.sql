@@ -7,6 +7,9 @@ GO
 CREATE DATABASE [Entertainment]
 GO
 
+USE [Entertainment]
+GO
+
 -- Agents table
 
 
@@ -20,7 +23,18 @@ GO
 
 
 -- Musical_Styles table
+CREATE TABLE [Musical_Styles]
+(
+	-- Musical_Styles Table Columns
+	[MusicalStylesKey] varchar(8) NOT NULL,
+	[MusicalStylesName] varchar(50) UNIQUE NOT NULL,
 
+	-- Primary Key (MusicalStylesKey)
+	CONSTRAINT PK_MusicalStyles PRIMARY KEY (MusicalStylesKey),
+	-- Ensure key starts with 'S'
+	CONSTRAINT Valid_Key_Musical_Styles CHECK (MusicalStylesKey LIKE 'S%'),
+);
+GO
 
 
 -- Customers table
