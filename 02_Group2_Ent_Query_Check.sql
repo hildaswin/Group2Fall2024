@@ -3,11 +3,33 @@
 
 --1. Create an agent phone list
 
+SELECT AgentsKey,
+	CONCAT(AgentsLastName, ', ', AgentsFirstName) AS AgentsName,
+	AgentsPhone
+FROM Agents;
+
 --2. Create a list of customers by city
+
+SELECT CustKey AS CustomersKey,
+	CONCAT(CustLastName, ', ', CustFirstName) AS CustomersName,
+	CustCity AS CustomersCity,
+	CustState AS CustomersState
+FROM Customers
+ORDER BY CustCity,
+	CustKey;
 
 --3. Create a list of when an agent received their first review (180 days after being hired)
 
+SELECT AgentsKey,
+	CONCAT(AgentsLastName, ', ', AgentsFirstName) AS AgentsName,
+	AgentsDateHired,
+	DATEADD(Day, 180, AgentsDateHired) AS AgentsFirstReviewDate
+FROM Agents;
+
 --4. Create a report of the net price per contract
+
+SELECT *
+FROM Engagements;
 
 --5. Create a report of all engagements that last more than 3 days
 
