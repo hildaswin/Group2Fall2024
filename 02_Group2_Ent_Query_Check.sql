@@ -1,7 +1,8 @@
 -- Group 2
 -- Adam Hanson, Alexis Brewers, Colton Bondhus, Ismail Abdullahi, Lily Rossman
 
-USE Entertainment;
+USE [Entertainment]
+GO
 
 --1. Create an agent phone list
 
