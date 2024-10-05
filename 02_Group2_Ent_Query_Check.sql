@@ -19,11 +19,39 @@
 
 --9. Create a list of all agents that have no contracts
 
+SELECT A.AgentsKey, A.AgentsFirstName, A.AgentsLastName
+FROM Agents A
+LEFT JOIN Engagements E ON A.AgentsKey = E.AgentKey
+WHERE E.AgentKey IS NULL;
+
 --10. Create a list of all customers with no bookings
 
+SELECT C.CustKey, C.CustFirstName, C.CustLastName
+FROM Customers C
+LEFT JOIN Engagements E ON C.CustKey = E.CustKey
+WHERE E.CustKey IS NULL;
+
 --11. Create a list of each customer's last booking
+SELECT  C.CustFirstName, C.CustLastName, E.EngagementKey, E.EngagementStartDate, E.EngagementEndDate
+FROM Customers C
+JOIN Engagements E ON C.CustKey = E.CustKey
+
+    
+ JOIN (   SELECT CustKey, MAX(EngagementEndDate) AS LastBookingDate
+    FROM Engagements
+    GROUP BY CustKey  )
+ LatestBooking ON E.CustKey = LatestBooking.CustKey AND E.EngagementEndDate = LatestBooking.LastBookingDate;
+
+
+
 
 --12. Create a list of customers who like Country or Country Rock
+
+SELECT  C.CustFirstName, C.CustLastName
+FROM Customers C
+
+JOIN Musical_Preferences MP ON C.CustKey = MP.CustKey
+WHERE MP.Genre IN ('Country', 'Country Rock');
 
 --13. Create a report of the number of engagements each group has performed
 
