@@ -21,14 +21,16 @@ WHERE DATEDIFF(day, EngagementStartDate, EngagementEndDate) > 3;
 --6. Create a report of all October engagements that occurred in 2022
 SELECT EngagementKey, EngagementStartDate, EngagementEndDate
 FROM Engagements
-	-- Limits results to only engagements that start in October 2022
+	-- Limits results to only engagements that take place entirely within October 2022
 WHERE MONTH(EngagementStartDate) = 10
+		AND MONTH(EngagementEndDate) = 10
 		AND YEAR(EngagementStartDate) = 2022;
 
 --7. Create a report of all October engagements that occurred between noon and 5 PM
 SELECT EngagementKey, EngagementStartDate, EngagementEndDate, EngagementStartTime, EngagementStopTime
 FROM Engagements
 WHERE MONTH(EngagementStartDate) = 10 
+		AND MONTH(EngagementEndDate) = 10
 		-- DATEPART grabs the hour from the Start and Stop times, and this value is compared to the requested hours.
 		-- Currently restricts query results to only engagements that took place entirely between 12:00 and 17:00
 		AND (DATEPART(hour, EngagementStartTime) BETWEEN 12 AND 17) 
