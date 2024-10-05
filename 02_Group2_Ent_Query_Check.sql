@@ -28,7 +28,11 @@ FROM Agents;
 
 --4. Create a report of the net price per contract
 
-SELECT *
+SELECT EngagementKey AS ContractID,
+	FORMAT(EngagementContractPrice, 'c') AS ContractNetPrice,
+	CustKey AS CustomerKey,
+	AgentKey,
+	GroupsKey
 FROM Engagements;
 
 --5. Create a report of all engagements that last more than 3 days
