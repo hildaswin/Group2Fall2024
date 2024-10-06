@@ -185,7 +185,7 @@ CREATE TABLE Engagements
     EngagementStopTime TIME NOT NULL,                    
     EngagementContractPrice DECIMAL(10, 2) NOT NULL,        
     CustKey VARCHAR(8) NOT NULL,                      
-    AgentKey VARCHAR(8) NOT NULL, 
+    AgentsKey VARCHAR(8) NOT NULL, 
 	GroupsKey VARCHAR(8) NOT NULL,
  
  -- engagements table constraints
@@ -193,7 +193,7 @@ CREATE TABLE Engagements
  CONSTRAINT CHK_ContractPrice CHECK (EngagementContractPrice >= 0),
 
      CONSTRAINT FK_CustKey FOREIGN KEY (CustKey) REFERENCES Customers(CustKey), -- Foreign Key to Customers table
-    CONSTRAINT FK_AgentKey FOREIGN KEY (AgentKey) REFERENCES Agents(AgentsKey), -- Foreign Key to Agents table
+    CONSTRAINT FK_AgentKey FOREIGN KEY (AgentsKey) REFERENCES Agents(AgentsKey), -- Foreign Key to Agents table
     CONSTRAINT FK_GroupKey FOREIGN KEY (GroupsKey) REFERENCES Groups(GroupsKey)  -- Foreign Key to Groups table
  );
  GO
