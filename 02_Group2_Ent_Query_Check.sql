@@ -123,9 +123,9 @@ FROM Agents;
 
 --15. Show our earliest October engagement in 2022
 
-SELECT TOP 1 EngagementKey, EngagementStartTime AS [Earliest October Engagement]
+SELECT TOP 1 EngagementKey, CONCAT(EngagementStartDate, ' ', EngagementStartTime) AS [Earliest October Engagement]
 FROM Engagements
-WHERE YEAR(EngagementStartTime) = 2022 AND MONTH(EngagementStartTime) = 10
+WHERE YEAR(EngagementStartDate) = 2022 AND MONTH(EngagementStartDate) = 10
 ORDER BY EngagementStartTime;
 
 --16. Show the value of our October 2022 bookings
