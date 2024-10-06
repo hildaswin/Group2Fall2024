@@ -129,7 +129,27 @@ WHERE YEAR(EngagementStartDate) = 2022 AND MONTH(EngagementStartDate) = 10
 ORDER BY EngagementStartTime;
 
 --16. Show the value of our October 2022 bookings
+SELECT SUM(EngagementContractPrice) AS 'October 2022 Booking Value'
+FROM Engagements
+WHERE MONTH(EngagementStartDate) = 10
+	AND MONTH(EngagementEndDate) = 10
+	AND YEAR(EngagementStartDate) = 2022;
 
 --17. Create a report of agent sales and commissions
+SELECT Agents.AgentsKey,
+	(Agents.AgentsFirstName + ' ' + Agents.AgentsLastName) AS AgentsFullName,
+    ROUND(SUM(Engagements.EngagementContractPrice), 2) AS AgentsSales, 
+    ROUND(SUM(Agents.AgentsCommissionRate * Engagements.EngagementContractPrice), 2) AS AgentsCommission
+FROM Agents
+JOIN Engagements ON Agents.AgentsKey = Engagements.AgentKey
+GROUP BY Agents.AgentsKey, Agents.AgentsFirstName, Agents.AgentsLastName;
+
 
 --18. Show only those agents who have a commission greater than $1000
+SELECT AgentsKey, 
+	(Agents.AgentsFirstName + ' ' + Agents.AgentsLastName) AS AgentsFullName, 
+	SUM(Agents.AgentsCommissionRate * Engagements.EngagementContractPrice) AS Commission
+FROM Agents
+JOIN Engagements ON Agents.AgentsKey = Engagements.AgentKey
+GROUP BY Agents.AgentsKey, Agents.AgentsFirstName, Agents.AgentsLastName
+HAVING SUM(Agents.AgentsCommissionRate * Engagements.EngagementContractPrice) > '1000';
