@@ -34,7 +34,7 @@ FROM Agents;
 SELECT EngagementKey AS ContractID,
 	FORMAT(EngagementContractPrice, 'c') AS ContractNetPrice,
 	CustKey AS CustomerKey,
-	AgentKey,
+	AgentsKey,
 	GroupsKey
 FROM Engagements;
 
@@ -76,8 +76,8 @@ ORDER BY Customers.CustKey, Groups.GroupsKey;
 
 SELECT A.AgentsKey, A.AgentsFirstName, A.AgentsLastName
 FROM Agents A
-LEFT JOIN Engagements E ON A.AgentsKey = E.AgentKey
-WHERE E.AgentKey IS NULL;
+LEFT JOIN Engagements E ON A.AgentsKey = E.AgentsKey
+WHERE E.AgentsKey IS NULL;
 
 --10. Create a list of all customers with no bookings
 

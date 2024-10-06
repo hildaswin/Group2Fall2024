@@ -173,7 +173,7 @@ VALUES
 
 
 -- Engagements table
-INSERT INTO Engagements (EngagementKey, EngagementStartDate, EngagementEndDate, EngagementStartTime, EngagementStopTime, EngagementContractPrice, CustKey, AgentKey, GroupsKey)
+INSERT INTO Engagements (EngagementKey, EngagementStartDate, EngagementEndDate, EngagementStartTime, EngagementStopTime, EngagementContractPrice, CustKey, AgentsKey, GroupsKey)
 VALUES 
 		(2, '2022-09-01', '2022-09-05', '13:00', '15:00', 200.00, 'C006', 'A004', 'G004'),
 		(3, '2022-09-10', '2022-09-15', '13:00', '15:00', 590.00, 'C001', 'A003', 'G005'),
