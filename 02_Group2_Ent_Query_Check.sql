@@ -84,23 +84,23 @@ WHERE MP.Genre IN ('Country', 'Country Rock');
 
 --13. Create a report of the number of engagements each group has performed
 
-SELECT G.GroupStageName AS [Stage Name], COUNT(E.EngagementKey) AS [Number Of Engagements]
+SELECT G.GroupsName AS [Stage Name], COUNT(E.EngagementKey) AS [Number Of Engagements]
 FROM Groups G
-LEFT JOIN Engagements E ON G.GroupKey = E.GroupKey
-GROUP BY G.GroupStageName
+LEFT JOIN Engagements E ON G.GroupsKey = E.GroupsKey
+GROUP BY G.GroupsName
 ORDER BY [Number Of Engagements] DESC, [Stage Name];
 
 --14. Create a report of the average agent salary
 
-SELECT CAST(AVG(AgentSalary) AS DECIMAL(10, 2)) AS [Average Agent Salary]
+SELECT CAST(AVG(AgentsSalary) AS DECIMAL(10, 2)) AS [Average Agent Salary]
 FROM Agents;
 
 --15. Show our earliest October engagement in 2022
 
-SELECT TOP 1 EngagementKey, EngStartDateTime AS [Earliest October Engagement]
+SELECT TOP 1 EngagementKey, EngagementStartTime AS [Earliest October Engagement]
 FROM Engagements
-WHERE YEAR(EngStartDateTime) = 2022 AND MONTH(EngStartDateTime) = 10
-ORDER BY EngStartDateTime;
+WHERE YEAR(EngagementStartTime) = 2022 AND MONTH(EngagementStartTime) = 10
+ORDER BY EngagementStartTime;
 
 --16. Show the value of our October 2022 bookings
 
