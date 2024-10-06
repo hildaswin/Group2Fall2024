@@ -102,11 +102,15 @@ JOIN Engagements E ON C.CustKey = E.CustKey
 
 --12. Create a list of customers who like Country or Country Rock
 
-SELECT  C.CustFirstName, C.CustLastName
-FROM Customers C
-
-JOIN Musical_Preferences MP ON C.CustKey = MP.CustKey
-WHERE MP.Genre IN ('Country', 'Country Rock');
+SELECT  C.CustFirstName,
+	C.CustLastName, 
+	MS.MusicalStylesName
+FROM Customers AS C
+INNER JOIN Musical_Preferences AS MP 
+	ON C.CustKey = MP.CustKey
+INNER JOIN Musical_Styles AS MS 
+	ON MP.MusicalStylesKey = MS.MusicalStylesKey
+WHERE MS.MusicalStylesName IN ('Country', 'Country Rock');
 
 --13. Create a report of the number of engagements each group has performed
 
