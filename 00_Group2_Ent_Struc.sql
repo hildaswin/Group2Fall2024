@@ -127,6 +127,8 @@ CREATE TABLE Customers
 	
 	-- customers table constraints
 	CONSTRAINT PK_CustKey PRIMARY KEY (CustKey),
+	-- Ensure CustKey starts with 'C'.
+	CONSTRAINT CHK_CustKey CHECK (CustKey LIKE 'C%'),
 	-- Ensure state abbreviation is valid.
 	CONSTRAINT CHK_CustState CHECK (CustState IN ('AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA',
 								'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD',
