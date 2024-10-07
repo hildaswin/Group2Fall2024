@@ -4,6 +4,7 @@
 USE [master]
 GO
 
+-- Create the Entertainment database
 CREATE DATABASE [Entertainment]
 GO
 
