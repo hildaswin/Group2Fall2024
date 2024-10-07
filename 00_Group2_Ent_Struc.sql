@@ -121,15 +121,23 @@ CREATE TABLE Customers
     CustLastName VARCHAR(50) NOT NULL,      
     CustAddress VARCHAR(50) NOT NULL,      
     CustCity VARCHAR(50) NOT NULL,          
-    CustState CHAR(2) NOT NULL,         
+    CustState CHAR(2) DEFAULT 'WA' NOT NULL,         
     CustZip CHAR(5) NOT NULL,            
     CustPhone VARCHAR(15)   NOT NULL,   
 	
 	-- customers table constraints
-	CONSTRAINT PK_CustKey PRIMARY KEY (CustKey),  
-	CONSTRAINT CHK_CustState CHECK (CustState = 'WA'),
+	CONSTRAINT PK_CustKey PRIMARY KEY (CustKey),
+	-- Ensure state abbreviation is valid.
+	CONSTRAINT CHK_CustState CHECK (CustState IN ('AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA',
+								'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD',
+								'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ',
+								'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC',
+								'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY')),
 	CONSTRAINT CHK_CustZip CHECK (CustZip LIKE '[0-9][0-9][0-9][0-9][0-9]'),
-	CONSTRAINT CHK_CustPhone CHECK (CustPhone LIKE '___-____' OR CustPhone LIKE '(___) ___-____')
+	-- Ensure phone is of valid format.
+	-- Accepted formats: [###-####], [(###)###-####]
+	CONSTRAINT CHK_CustPhone CHECK (CustPhone LIKE '[0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]'
+						OR CustPhone LIKE '([0-9][0-9][0-9])[0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]')
 );
 
 GO
